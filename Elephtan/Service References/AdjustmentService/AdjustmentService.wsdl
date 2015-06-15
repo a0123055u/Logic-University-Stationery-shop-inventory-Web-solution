@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.nus.edu.sg/storeservcie" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.nus.edu.sg/storeservcie" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.nus.edu.sg/storeservcie">
+      <s:element name="QueryAdjustList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:AdjustmentFindRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AdjustmentFindRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:RequestMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="AdjustmentId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CreateUserId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="AdjustementNo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CreateTime" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="UpdateTime" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="AdjustmentStatus" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DetailId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ItemId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="QuantityAdjusted" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Reason" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="RequestMessage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RequestUserNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RequestUserId" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="QueryAdjustListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryAdjustListResult" type="tns:AdjustmentFindListResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AdjustmentFindListResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ResponseMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ListResponser" type="tns:ArrayOfAdjustmentFindResponse" />
+              <s:element minOccurs="0" maxOccurs="1" name="ListAdjustmentDetails" type="tns:ArrayOfAdjustmentDetail" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ResponseMessage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceResponseCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceResponseMessge" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AdjustmentFindResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ResponseMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="AdjustmentId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CreateUserId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="AdjustementNo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CreateTime" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="UpdateTime" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="AdjustmentStatus" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DetailId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ItemId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Price" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="QuantityAdjusted" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Reason" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="AdjustmentDetailList" type="tns:ArrayOfAdjustmentDetail" />
+              <s:element minOccurs="0" maxOccurs="1" name="Totalamount1" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfAdjustmentDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AdjustmentDetail" nillable="true" type="tns:AdjustmentDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AdjustmentDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DetailId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Price" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="QuantityAdjusted" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Reason" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ItemId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ItemName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAdjustmentFindResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AdjustmentFindResponse" nillable="true" type="tns:AdjustmentFindResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="QueryAdjustById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:AdjustmentFindRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryAdjustByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryAdjustByIdResult" type="tns:AdjustmentFindResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="createAdjustment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:AdjustmentFindRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="createAdjustmentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="createAdjustmentResult" type="tns:AdjustmentFindResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateadjustment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:AdjustmentFindRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateadjustmentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updateadjustmentResult" type="tns:AdjustmentFindResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="viewdetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:AdjustmentFindRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="viewdetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="viewdetailsResult" type="tns:AdjustmentFindListResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="QueryAdjustListSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryAdjustList" />
+  </wsdl:message>
+  <wsdl:message name="QueryAdjustListSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryAdjustListResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryAdjustByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryAdjustById" />
+  </wsdl:message>
+  <wsdl:message name="QueryAdjustByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryAdjustByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="createAdjustmentSoapIn">
+    <wsdl:part name="parameters" element="tns:createAdjustment" />
+  </wsdl:message>
+  <wsdl:message name="createAdjustmentSoapOut">
+    <wsdl:part name="parameters" element="tns:createAdjustmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateadjustmentSoapIn">
+    <wsdl:part name="parameters" element="tns:updateadjustment" />
+  </wsdl:message>
+  <wsdl:message name="updateadjustmentSoapOut">
+    <wsdl:part name="parameters" element="tns:updateadjustmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="viewdetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:viewdetails" />
+  </wsdl:message>
+  <wsdl:message name="viewdetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:viewdetailsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AdjustmentServiceSoap">
+    <wsdl:operation name="QueryAdjustList">
+      <wsdl:input message="tns:QueryAdjustListSoapIn" />
+      <wsdl:output message="tns:QueryAdjustListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryAdjustById">
+      <wsdl:input message="tns:QueryAdjustByIdSoapIn" />
+      <wsdl:output message="tns:QueryAdjustByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="createAdjustment">
+      <wsdl:input message="tns:createAdjustmentSoapIn" />
+      <wsdl:output message="tns:createAdjustmentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateadjustment">
+      <wsdl:input message="tns:updateadjustmentSoapIn" />
+      <wsdl:output message="tns:updateadjustmentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="viewdetails">
+      <wsdl:input message="tns:viewdetailsSoapIn" />
+      <wsdl:output message="tns:viewdetailsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AdjustmentServiceSoap" type="tns:AdjustmentServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="QueryAdjustList">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/QueryAdjustList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryAdjustById">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/QueryAdjustById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createAdjustment">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/createAdjustment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateadjustment">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/updateadjustment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="viewdetails">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/viewdetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AdjustmentServiceSoap12" type="tns:AdjustmentServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="QueryAdjustList">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/QueryAdjustList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryAdjustById">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/QueryAdjustById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createAdjustment">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/createAdjustment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateadjustment">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/updateadjustment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="viewdetails">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/viewdetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AdjustmentService">
+    <wsdl:port name="AdjustmentServiceSoap" binding="tns:AdjustmentServiceSoap">
+      <soap:address location="http://10.10.1.177:6685/sg/edu/nus/adjustment/webservice/AdjustmentService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AdjustmentServiceSoap12" binding="tns:AdjustmentServiceSoap12">
+      <soap12:address location="http://10.10.1.177:6685/sg/edu/nus/adjustment/webservice/AdjustmentService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

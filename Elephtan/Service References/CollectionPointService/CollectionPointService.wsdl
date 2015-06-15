@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.nus.edu.sg/storeservcie" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.nus.edu.sg/storeservcie" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.nus.edu.sg/storeservcie">
+      <s:element name="QueryCollectionById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:CollectionPointFindRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CollectionPointFindRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:RequestMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="CollectionPointId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CollectionTime" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="StoreClerkId" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="RequestMessage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RequestUserNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RequestUserId" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="QueryCollectionByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryCollectionByIdResult" type="tns:CollectionPointFindResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CollectionPointFindResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ResponseMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="CollectionPointId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CollectionTime" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="StoreClerkId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ClertName" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ResponseMessage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceResponseCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceResponseMessge" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="QueryCollectionList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:CollectionPointFindRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryCollectionListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryCollectionListResult" type="tns:CollectionPointFindListResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CollectionPointFindListResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ResponseMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ListResponse" type="tns:ArrayOfCollectionPointFindResponse" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfCollectionPointFindResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CollectionPointFindResponse" nillable="true" type="tns:CollectionPointFindResponse" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="QueryCollectionByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryCollectionById" />
+  </wsdl:message>
+  <wsdl:message name="QueryCollectionByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryCollectionByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryCollectionListSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryCollectionList" />
+  </wsdl:message>
+  <wsdl:message name="QueryCollectionListSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryCollectionListResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CollectionPointServiceSoap">
+    <wsdl:operation name="QueryCollectionById">
+      <wsdl:input message="tns:QueryCollectionByIdSoapIn" />
+      <wsdl:output message="tns:QueryCollectionByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryCollectionList">
+      <wsdl:input message="tns:QueryCollectionListSoapIn" />
+      <wsdl:output message="tns:QueryCollectionListSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CollectionPointServiceSoap" type="tns:CollectionPointServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="QueryCollectionById">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/QueryCollectionById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryCollectionList">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/QueryCollectionList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CollectionPointServiceSoap12" type="tns:CollectionPointServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="QueryCollectionById">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/QueryCollectionById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryCollectionList">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/QueryCollectionList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CollectionPointService">
+    <wsdl:port name="CollectionPointServiceSoap" binding="tns:CollectionPointServiceSoap">
+      <soap:address location="http://10.10.1.177:6685/sg/edu/nus/collectionpoint/webservice/CollectionPointService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CollectionPointServiceSoap12" binding="tns:CollectionPointServiceSoap12">
+      <soap12:address location="http://10.10.1.177:6685/sg/edu/nus/collectionpoint/webservice/CollectionPointService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

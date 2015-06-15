@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.nus.edu.sg/storeservcie" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.nus.edu.sg/storeservcie" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.nus.edu.sg/storeservcie">
+      <s:element name="ConfirmOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:OrderManageRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="OrderManageRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:RequestMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="OrderId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="OrderNo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="SupplierId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DeliveryTime" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DeliveryAddress" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Attn" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="OrderStatus" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DeliveryId" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="RequestMessage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RequestUserNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RequestUserId" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConfirmOrderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConfirmOrderResult" type="tns:OrderManageResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="OrderManageResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ResponseMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="OrderId" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ResponseMessage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceResponseCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceResponseMessge" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ReceiveOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:OrderManageRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReceiveOrderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReceiveOrderResult" type="tns:OrderManageResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindOrderList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:OrderFindListRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="OrderFindListRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:RequestMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="OrderStatus" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="SupplierId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DeliveryId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DeliveryStatus" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="FindOrderListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindOrderListResult" type="tns:OrderFindListResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="OrderFindListResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ResponseMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="OrderFindResponseList" type="tns:ArrayOfOrderFindResponse" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfOrderFindResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OrderFindResponse" nillable="true" type="tns:OrderFindResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OrderFindResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ResponseMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="OrderId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="OrderNo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="SupplierId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CreateUserId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ApproveUserId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CreateTime" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ApproveTime" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DeliveryTime" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DeliveryAddress" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Attn" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="OrderStatus" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CreateUserName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="SupplierName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="OrderDetailList" type="tns:ArrayOfOrderDetail" />
+              <s:element minOccurs="0" maxOccurs="1" name="DeliveryId" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfOrderDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OrderDetail" nillable="true" type="tns:OrderDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OrderDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="OrderDetailId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrderId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ItemId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrderedQuantity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReceivedQuantiy" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrderDetailStatus" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ItemName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ItemNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Unit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SupplierName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeliveryDetailId" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FindSupplierDeliveryList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:OrderFindListRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindSupplierDeliveryListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindSupplierDeliveryListResult" type="tns:OrderFindListResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindOrderDetailListByOrderId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:OrderFindRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="OrderFindRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="OrderId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrderStatus" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeliveryId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeliveryDetailId" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FindOrderDetailListByOrderIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindOrderDetailListByOrderIdResult" type="tns:OrderFindResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:OrderManageRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateOrderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateOrderResult" type="tns:OrderManageResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:OrderManageRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateOrderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateOrderResult" type="tns:OrderManageResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateOrderDetail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:OrderDetailManageRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="OrderDetailManageRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:RequestMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="OrderId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="SupplierId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ItemId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="OrderDetailStatus" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="OrderedQuantity" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ReceivedQuantity" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="OrderDetailId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DeliveryDetailId" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="CreateOrderDetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateOrderDetailResult" type="tns:OrderDetailManageResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="OrderDetailManageResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ResponseMessage" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="UpdateOrderDetail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:OrderDetailManageRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateOrderDetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateOrderDetailResult" type="tns:OrderDetailManageResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindDeliveryDetailListByDelieveryId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:OrderFindRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindDeliveryDetailListByDelieveryIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindDeliveryDetailListByDelieveryIdResult" type="tns:OrderFindResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateDeliveryDetail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:OrderDetailManageRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateDeliveryDetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateDeliveryDetailResult" type="tns:OrderDetailManageResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ConfirmOrderSoapIn">
+    <wsdl:part name="parameters" element="tns:ConfirmOrder" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmOrderSoapOut">
+    <wsdl:part name="parameters" element="tns:ConfirmOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReceiveOrderSoapIn">
+    <wsdl:part name="parameters" element="tns:ReceiveOrder" />
+  </wsdl:message>
+  <wsdl:message name="ReceiveOrderSoapOut">
+    <wsdl:part name="parameters" element="tns:ReceiveOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindOrderListSoapIn">
+    <wsdl:part name="parameters" element="tns:FindOrderList" />
+  </wsdl:message>
+  <wsdl:message name="FindOrderListSoapOut">
+    <wsdl:part name="parameters" element="tns:FindOrderListResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindSupplierDeliveryListSoapIn">
+    <wsdl:part name="parameters" element="tns:FindSupplierDeliveryList" />
+  </wsdl:message>
+  <wsdl:message name="FindSupplierDeliveryListSoapOut">
+    <wsdl:part name="parameters" element="tns:FindSupplierDeliveryListResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindOrderDetailListByOrderIdSoapIn">
+    <wsdl:part name="parameters" element="tns:FindOrderDetailListByOrderId" />
+  </wsdl:message>
+  <wsdl:message name="FindOrderDetailListByOrderIdSoapOut">
+    <wsdl:part name="parameters" element="tns:FindOrderDetailListByOrderIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateOrderSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateOrder" />
+  </wsdl:message>
+  <wsdl:message name="CreateOrderSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateOrderSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateOrder" />
+  </wsdl:message>
+  <wsdl:message name="UpdateOrderSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateOrderDetailSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateOrderDetail" />
+  </wsdl:message>
+  <wsdl:message name="CreateOrderDetailSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateOrderDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateOrderDetailSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateOrderDetail" />
+  </wsdl:message>
+  <wsdl:message name="UpdateOrderDetailSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateOrderDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindDeliveryDetailListByDelieveryIdSoapIn">
+    <wsdl:part name="parameters" element="tns:FindDeliveryDetailListByDelieveryId" />
+  </wsdl:message>
+  <wsdl:message name="FindDeliveryDetailListByDelieveryIdSoapOut">
+    <wsdl:part name="parameters" element="tns:FindDeliveryDetailListByDelieveryIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDeliveryDetailSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateDeliveryDetail" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDeliveryDetailSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateDeliveryDetailResponse" />
+  </wsdl:message>
+  <wsdl:portType name="OrderServiceSoap">
+    <wsdl:operation name="ConfirmOrder">
+      <wsdl:input message="tns:ConfirmOrderSoapIn" />
+      <wsdl:output message="tns:ConfirmOrderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveOrder">
+      <wsdl:input message="tns:ReceiveOrderSoapIn" />
+      <wsdl:output message="tns:ReceiveOrderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindOrderList">
+      <wsdl:input message="tns:FindOrderListSoapIn" />
+      <wsdl:output message="tns:FindOrderListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindSupplierDeliveryList">
+      <wsdl:input message="tns:FindSupplierDeliveryListSoapIn" />
+      <wsdl:output message="tns:FindSupplierDeliveryListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindOrderDetailListByOrderId">
+      <wsdl:input message="tns:FindOrderDetailListByOrderIdSoapIn" />
+      <wsdl:output message="tns:FindOrderDetailListByOrderIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrder">
+      <wsdl:input message="tns:CreateOrderSoapIn" />
+      <wsdl:output message="tns:CreateOrderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOrder">
+      <wsdl:input message="tns:UpdateOrderSoapIn" />
+      <wsdl:output message="tns:UpdateOrderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrderDetail">
+      <wsdl:input message="tns:CreateOrderDetailSoapIn" />
+      <wsdl:output message="tns:CreateOrderDetailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOrderDetail">
+      <wsdl:input message="tns:UpdateOrderDetailSoapIn" />
+      <wsdl:output message="tns:UpdateOrderDetailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindDeliveryDetailListByDelieveryId">
+      <wsdl:input message="tns:FindDeliveryDetailListByDelieveryIdSoapIn" />
+      <wsdl:output message="tns:FindDeliveryDetailListByDelieveryIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDeliveryDetail">
+      <wsdl:input message="tns:UpdateDeliveryDetailSoapIn" />
+      <wsdl:output message="tns:UpdateDeliveryDetailSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="OrderServiceSoap" type="tns:OrderServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ConfirmOrder">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/ConfirmOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveOrder">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/ReceiveOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindOrderList">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/FindOrderList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindSupplierDeliveryList">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/FindSupplierDeliveryList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindOrderDetailListByOrderId">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/FindOrderDetailListByOrderId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrder">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/CreateOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOrder">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/UpdateOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrderDetail">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/CreateOrderDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOrderDetail">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/UpdateOrderDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindDeliveryDetailListByDelieveryId">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/FindDeliveryDetailListByDelieveryId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDeliveryDetail">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/UpdateDeliveryDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="OrderServiceSoap12" type="tns:OrderServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ConfirmOrder">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/ConfirmOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveOrder">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/ReceiveOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindOrderList">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/FindOrderList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindSupplierDeliveryList">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/FindSupplierDeliveryList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindOrderDetailListByOrderId">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/FindOrderDetailListByOrderId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrder">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/CreateOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOrder">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/UpdateOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrderDetail">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/CreateOrderDetail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOrderDetail">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/UpdateOrderDetail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindDeliveryDetailListByDelieveryId">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/FindDeliveryDetailListByDelieveryId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDeliveryDetail">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/UpdateDeliveryDetail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OrderService">
+    <wsdl:port name="OrderServiceSoap" binding="tns:OrderServiceSoap">
+      <soap:address location="http://10.10.1.177:6685/sg/edu/nus/order/webservice/OrderService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="OrderServiceSoap12" binding="tns:OrderServiceSoap12">
+      <soap12:address location="http://10.10.1.177:6685/sg/edu/nus/order/webservice/OrderService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

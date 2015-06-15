@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.nus.edu.sg/storeservcie" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.nus.edu.sg/storeservcie" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.nus.edu.sg/storeservcie">
+      <s:element name="QueryDictList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:DictFindRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DictFindRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:RequestMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="DictId1" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DictTypeId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DictName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DictTypeCode" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DictValue" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ServiceResponseMessge" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ServiceResponseCode" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="RequestMessage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RequestUserNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RequestUserId" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="QueryDictListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryDictListResult" type="tns:DictFindListResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DictFindListResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ResponseMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ListResponse" type="tns:ArrayOfDictFindResponse" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ResponseMessage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceResponseCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceResponseMessge" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DictFindResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ResponseMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="DictId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DictTypeId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DictName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DictTypeCode" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DictValue" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfDictFindResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DictFindResponse" nillable="true" type="tns:DictFindResponse" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="QueryDictListSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryDictList" />
+  </wsdl:message>
+  <wsdl:message name="QueryDictListSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryDictListResponse" />
+  </wsdl:message>
+  <wsdl:portType name="DictServiceSoap">
+    <wsdl:operation name="QueryDictList">
+      <wsdl:input message="tns:QueryDictListSoapIn" />
+      <wsdl:output message="tns:QueryDictListSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DictServiceSoap" type="tns:DictServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="QueryDictList">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/QueryDictList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DictServiceSoap12" type="tns:DictServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="QueryDictList">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/QueryDictList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DictService">
+    <wsdl:port name="DictServiceSoap" binding="tns:DictServiceSoap">
+      <soap:address location="http://10.10.1.177:6685/sg/edu/nus/dict/webservice/DictService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DictServiceSoap12" binding="tns:DictServiceSoap12">
+      <soap12:address location="http://10.10.1.177:6685/sg/edu/nus/dict/webservice/DictService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

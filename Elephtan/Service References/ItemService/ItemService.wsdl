@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.nus.edu.sg/storeservcie" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.nus.edu.sg/storeservcie" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.nus.edu.sg/storeservcie">
+      <s:element name="QueryItemList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:ItemFindListRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ItemFindListRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:RequestMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ItemNumber" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CategoryName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ItemDesc" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ItemStatus" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ItemId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="QueryString" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="RequestMessage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RequestUserNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RequestUserId" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="QueryItemListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryItemListResult" type="tns:ItemFindListResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ItemFindListResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ResponseMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ItemFindListResponseList" type="tns:ArrayOfItemFindResponse" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ResponseMessage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceResponseCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceResponseMessge" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ItemFindResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ResponseMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ItemId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ItemNumber" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CategoryId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="ReorderLevel" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="ReorderQuantity" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="CurrentQuantity" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="ItemStatus" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Price" type="s:double" />
+              <s:element minOccurs="0" maxOccurs="1" name="Unit" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="ActualQuantity" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Suppliers" type="tns:ArrayOfSupplierEntry" />
+              <s:element minOccurs="0" maxOccurs="1" name="CategoryName" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfSupplierEntry">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SupplierEntry" nillable="true" type="tns:SupplierEntry" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SupplierEntry">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SupplierId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SupplierName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SupplierCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Rank" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfItemFindResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ItemFindResponse" nillable="true" type="tns:ItemFindResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="QueryItemById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:ItemFindRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ItemFindRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:RequestMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ItemId" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="QueryItemByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryItemByIdResult" type="tns:ItemFindResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:ItemManageRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ItemManageRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:RequestMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ItemId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ItemNumber" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CategoryId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="ReorderLevel" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="ReorderQuantity" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="CurrentQuantity" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="ItemStatus" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Price" type="s:double" />
+              <s:element minOccurs="0" maxOccurs="1" name="Unit" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="ActualQuantity" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="SupplierId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="SuppliersIds" type="tns:ArrayOfString" />
+              <s:element minOccurs="0" maxOccurs="1" name="CatelogId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Suppliers" type="tns:ArrayOfSupplierEntry" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateItemResult" type="tns:ItemManageResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ItemManageResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ResponseMessage" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="UpdateItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:ItemManageRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateItemResult" type="tns:ItemManageResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteItemById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:ItemManageRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteItemByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteItemByIdResult" type="tns:ItemManageResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="QueryItemListSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryItemList" />
+  </wsdl:message>
+  <wsdl:message name="QueryItemListSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryItemListResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryItemByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryItemById" />
+  </wsdl:message>
+  <wsdl:message name="QueryItemByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryItemByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateItemSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateItem" />
+  </wsdl:message>
+  <wsdl:message name="CreateItemSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateItemSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateItem" />
+  </wsdl:message>
+  <wsdl:message name="UpdateItemSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteItemByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteItemById" />
+  </wsdl:message>
+  <wsdl:message name="DeleteItemByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteItemByIdResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ItemServiceSoap">
+    <wsdl:operation name="QueryItemList">
+      <wsdl:input message="tns:QueryItemListSoapIn" />
+      <wsdl:output message="tns:QueryItemListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryItemById">
+      <wsdl:input message="tns:QueryItemByIdSoapIn" />
+      <wsdl:output message="tns:QueryItemByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateItem">
+      <wsdl:input message="tns:CreateItemSoapIn" />
+      <wsdl:output message="tns:CreateItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateItem">
+      <wsdl:input message="tns:UpdateItemSoapIn" />
+      <wsdl:output message="tns:UpdateItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteItemById">
+      <wsdl:input message="tns:DeleteItemByIdSoapIn" />
+      <wsdl:output message="tns:DeleteItemByIdSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ItemServiceSoap" type="tns:ItemServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="QueryItemList">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/QueryItemList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryItemById">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/QueryItemById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateItem">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/CreateItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateItem">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/UpdateItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteItemById">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/DeleteItemById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ItemServiceSoap12" type="tns:ItemServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="QueryItemList">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/QueryItemList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryItemById">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/QueryItemById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateItem">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/CreateItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateItem">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/UpdateItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteItemById">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/DeleteItemById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ItemService">
+    <wsdl:port name="ItemServiceSoap" binding="tns:ItemServiceSoap">
+      <soap:address location="http://10.10.1.177:6685/sg/edu/nus/item/webservice/ItemService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ItemServiceSoap12" binding="tns:ItemServiceSoap12">
+      <soap12:address location="http://10.10.1.177:6685/sg/edu/nus/item/webservice/ItemService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,47 @@
+body {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #fff;
+}
+
+h2 {
+    color: #545454;
+}
+
+h4 {
+    color: #717171;
+}
+
+#inputEmail {
+    margin-bottom: 0px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+#inputPassword {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+#logoImage {
+    max-height: 150px;
+}
+
+#form-signin {
+    background-color: black;
+}
+
+#loginPanel {
+    background-color: #F7F7F7;
+    padding: 15px 35px 15px 35px;
+    box-shadow: 1px 2px 4px 0px rgba(0, 0, 0, 0.30);
+}
+
+#siginInstruction {
+    margin-bottom: 25px;
+}
+
+#checkboxSignedIn {
+    margin-top: -5px;
+}

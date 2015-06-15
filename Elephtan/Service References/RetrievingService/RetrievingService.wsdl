@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.nus.edu.sg/storeservcie" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.nus.edu.sg/storeservcie" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.nus.edu.sg/storeservcie">
+      <s:element name="FindRetrievingById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:RetrievingFindRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RetrievingFindRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:RequestMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="RetrievingId" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="RequestMessage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RequestUserNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RequestUserId" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FindRetrievingByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindRetrievingByIdResult" type="tns:RetrievingFindResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RetrievingFindResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ResponseMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="RetrievingId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CreateUserId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="RetrievingStatus" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CreateTime" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="RetrievingDesc" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="RetrievingDetailList" type="tns:ArrayOfRetrievingDetail" />
+              <s:element minOccurs="0" maxOccurs="1" name="RetrievingNum" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ResponseMessage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceResponseCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceResponseMessge" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRetrievingDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RetrievingDetail" nillable="true" type="tns:RetrievingDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RetrievingDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RetrivingDetailId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ItemId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AppliedQuantity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RetrivedQuantity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RetrivingId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ItemName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ItemNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Unit" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FindRetrievingList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:RetrievingFindListRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RetrievingFindListRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:RequestMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="RetrievingStatus" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="FindRetrievingListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindRetrievingListResult" type="tns:RetrievingFindListResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RetrievingFindListResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ResponseMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="RetrievingFindResponseList" type="tns:ArrayOfRetrievingFindResponse" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfRetrievingFindResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RetrievingFindResponse" nillable="true" type="tns:RetrievingFindResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConfirmRetrivingForm">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:RetrievingManageRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RetrievingManageRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:RequestMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="RetrievingId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="RetrievingDesc" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="ConfirmRetrivingFormResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConfirmRetrivingFormResult" type="tns:RetrievingManageResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RetrievingManageResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ResponseMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="RetrievingId" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GenereateRetrievingForm">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:RetrievingManageRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenereateRetrievingFormResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GenereateRetrievingFormResult" type="tns:RetrievingManageResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateRetrivingDetail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:RetrievingDetailManageRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RetrievingDetailManageRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:RequestMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="RetrievingDetailId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="AppliedQuantity" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="RetrievedQuantity" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="UpdateRetrivingDetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateRetrivingDetailResult" type="tns:RetrievingDetailManageResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RetrievingDetailManageResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ResponseMessage" />
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="FindRetrievingByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:FindRetrievingById" />
+  </wsdl:message>
+  <wsdl:message name="FindRetrievingByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:FindRetrievingByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindRetrievingListSoapIn">
+    <wsdl:part name="parameters" element="tns:FindRetrievingList" />
+  </wsdl:message>
+  <wsdl:message name="FindRetrievingListSoapOut">
+    <wsdl:part name="parameters" element="tns:FindRetrievingListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmRetrivingFormSoapIn">
+    <wsdl:part name="parameters" element="tns:ConfirmRetrivingForm" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmRetrivingFormSoapOut">
+    <wsdl:part name="parameters" element="tns:ConfirmRetrivingFormResponse" />
+  </wsdl:message>
+  <wsdl:message name="GenereateRetrievingFormSoapIn">
+    <wsdl:part name="parameters" element="tns:GenereateRetrievingForm" />
+  </wsdl:message>
+  <wsdl:message name="GenereateRetrievingFormSoapOut">
+    <wsdl:part name="parameters" element="tns:GenereateRetrievingFormResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateRetrivingDetailSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateRetrivingDetail" />
+  </wsdl:message>
+  <wsdl:message name="UpdateRetrivingDetailSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateRetrivingDetailResponse" />
+  </wsdl:message>
+  <wsdl:portType name="RetrievingServiceSoap">
+    <wsdl:operation name="FindRetrievingById">
+      <wsdl:input message="tns:FindRetrievingByIdSoapIn" />
+      <wsdl:output message="tns:FindRetrievingByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindRetrievingList">
+      <wsdl:input message="tns:FindRetrievingListSoapIn" />
+      <wsdl:output message="tns:FindRetrievingListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmRetrivingForm">
+      <wsdl:input message="tns:ConfirmRetrivingFormSoapIn" />
+      <wsdl:output message="tns:ConfirmRetrivingFormSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GenereateRetrievingForm">
+      <wsdl:input message="tns:GenereateRetrievingFormSoapIn" />
+      <wsdl:output message="tns:GenereateRetrievingFormSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRetrivingDetail">
+      <wsdl:input message="tns:UpdateRetrivingDetailSoapIn" />
+      <wsdl:output message="tns:UpdateRetrivingDetailSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="RetrievingServiceSoap" type="tns:RetrievingServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="FindRetrievingById">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/FindRetrievingById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindRetrievingList">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/FindRetrievingList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmRetrivingForm">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/ConfirmRetrivingForm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenereateRetrievingForm">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/GenereateRetrievingForm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRetrivingDetail">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/UpdateRetrivingDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="RetrievingServiceSoap12" type="tns:RetrievingServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="FindRetrievingById">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/FindRetrievingById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindRetrievingList">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/FindRetrievingList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmRetrivingForm">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/ConfirmRetrivingForm" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenereateRetrievingForm">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/GenereateRetrievingForm" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRetrivingDetail">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/UpdateRetrivingDetail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="RetrievingService">
+    <wsdl:port name="RetrievingServiceSoap" binding="tns:RetrievingServiceSoap">
+      <soap:address location="http://10.10.1.177:6685/sg/edu/nus/retrieving/webservice/RetrievingService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="RetrievingServiceSoap12" binding="tns:RetrievingServiceSoap12">
+      <soap12:address location="http://10.10.1.177:6685/sg/edu/nus/retrieving/webservice/RetrievingService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

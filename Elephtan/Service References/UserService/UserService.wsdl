@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.nus.edu.sg/storeservcie" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.nus.edu.sg/storeservcie" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.nus.edu.sg/storeservcie">
+      <s:element name="QueryUserByNum">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:UserFindRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UserFindRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:RequestMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="UserNo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="GcmRegistration" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="RequestMessage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RequestUserNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RequestUserId" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="QueryUserByNumResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryUserByNumResult" type="tns:UserFindResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UserFindResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ResponseMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="GcmRegritration" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="UserNo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="UserStatus" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TelephoneNo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DepartmentId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Roles" type="tns:ArrayOfRoleEntry" />
+              <s:element minOccurs="0" maxOccurs="1" name="DepartmentName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DepartmentCode" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DelegationFlag" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ResponseMessage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceResponseCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceResponseMessge" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRoleEntry">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RoleEntry" nillable="true" type="tns:RoleEntry" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RoleEntry">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RoleCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RoleName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Menus" type="tns:ArrayOfMenuEntry" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfMenuEntry">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MenuEntry" nillable="true" type="tns:MenuEntry" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MenuEntry">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MenuName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Url" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="QueryUserById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:UserFindRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryUserByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryUserByIdResult" type="tns:UserFindResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueryUsersByDepartmentId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:UserFindListRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UserFindListRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:RequestMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="DepartmentId" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="QueryUsersByDepartmentIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryUsersByDepartmentIdResult" type="tns:UserFindListResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UserFindListResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ResponseMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="UserFindResponseList" type="tns:ArrayOfUserFindResponse" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfUserFindResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UserFindResponse" nillable="true" type="tns:UserFindResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="updategcmregistration">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:UserFindRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updategcmregistrationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updategcmregistrationResult" type="tns:UserFindResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindGcmRegistrationByUserId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:UserFindRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindGcmRegistrationByUserIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindGcmRegistrationByUserIdResult" type="tns:UserFindResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="QueryUserByNumSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryUserByNum" />
+  </wsdl:message>
+  <wsdl:message name="QueryUserByNumSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryUserByNumResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryUserByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryUserById" />
+  </wsdl:message>
+  <wsdl:message name="QueryUserByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryUserByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryUsersByDepartmentIdSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryUsersByDepartmentId" />
+  </wsdl:message>
+  <wsdl:message name="QueryUsersByDepartmentIdSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryUsersByDepartmentIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="updategcmregistrationSoapIn">
+    <wsdl:part name="parameters" element="tns:updategcmregistration" />
+  </wsdl:message>
+  <wsdl:message name="updategcmregistrationSoapOut">
+    <wsdl:part name="parameters" element="tns:updategcmregistrationResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindGcmRegistrationByUserIdSoapIn">
+    <wsdl:part name="parameters" element="tns:FindGcmRegistrationByUserId" />
+  </wsdl:message>
+  <wsdl:message name="FindGcmRegistrationByUserIdSoapOut">
+    <wsdl:part name="parameters" element="tns:FindGcmRegistrationByUserIdResponse" />
+  </wsdl:message>
+  <wsdl:portType name="UserServiceSoap">
+    <wsdl:operation name="QueryUserByNum">
+      <wsdl:input message="tns:QueryUserByNumSoapIn" />
+      <wsdl:output message="tns:QueryUserByNumSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryUserById">
+      <wsdl:input message="tns:QueryUserByIdSoapIn" />
+      <wsdl:output message="tns:QueryUserByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryUsersByDepartmentId">
+      <wsdl:input message="tns:QueryUsersByDepartmentIdSoapIn" />
+      <wsdl:output message="tns:QueryUsersByDepartmentIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updategcmregistration">
+      <wsdl:input message="tns:updategcmregistrationSoapIn" />
+      <wsdl:output message="tns:updategcmregistrationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindGcmRegistrationByUserId">
+      <wsdl:input message="tns:FindGcmRegistrationByUserIdSoapIn" />
+      <wsdl:output message="tns:FindGcmRegistrationByUserIdSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UserServiceSoap" type="tns:UserServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="QueryUserByNum">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/QueryUserByNum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryUserById">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/QueryUserById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryUsersByDepartmentId">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/QueryUsersByDepartmentId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updategcmregistration">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/updategcmregistration" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindGcmRegistrationByUserId">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/FindGcmRegistrationByUserId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="UserServiceSoap12" type="tns:UserServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="QueryUserByNum">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/QueryUserByNum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryUserById">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/QueryUserById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryUsersByDepartmentId">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/QueryUsersByDepartmentId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updategcmregistration">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/updategcmregistration" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindGcmRegistrationByUserId">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/FindGcmRegistrationByUserId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UserService">
+    <wsdl:port name="UserServiceSoap" binding="tns:UserServiceSoap">
+      <soap:address location="http://10.10.1.177:6685/sg/edu/nus/user/webservice/UserService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="UserServiceSoap12" binding="tns:UserServiceSoap12">
+      <soap12:address location="http://10.10.1.177:6685/sg/edu/nus/user/webservice/UserService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

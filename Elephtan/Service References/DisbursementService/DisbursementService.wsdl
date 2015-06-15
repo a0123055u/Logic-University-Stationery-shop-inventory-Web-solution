@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.nus.edu.sg/storeservcie" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.nus.edu.sg/storeservcie" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.nus.edu.sg/storeservcie">
+      <s:element name="GenerateDisbursementForm">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:DisbursementManageRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DisbursementManageRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:RequestMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="DisbursementId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="RetrievingId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DetailList" type="tns:ArrayOfDisbursementDetail" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="RequestMessage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RequestUserNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RequestUserId" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDisbursementDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DisbursementDetail" nillable="true" type="tns:DisbursementDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DisbursementDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Unit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DisbursementDetailId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DisbursementId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ItemId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AppliedQuantity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AssignedQuantity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ItemName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ItemNum" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GenerateDisbursementFormResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GenerateDisbursementFormResult" type="tns:DisbursementManageResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DisbursementManageResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ResponseMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="DisbursementId" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ResponseMessage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceResponseCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceResponseMessge" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="QueryDisbursementList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:DisbursementFindListRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DisbursementFindListRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:RequestMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="DisbursementId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DisbursementStatus" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DepartmentId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="QueryDisbursementListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryDisbursementListResult" type="tns:DisbursementFindListResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DisbursementFindListResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ResponseMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="DisbursementFindResponseList" type="tns:ArrayOfDisbursementFindResponse" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfDisbursementFindResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DisbursementFindResponse" nillable="true" type="tns:DisbursementFindResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DisbursementFindResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ResponseMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="RepresentativeNo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CollectionPointAddress" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CollectionTime" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="RepresentativeName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DisbursementId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DisbursementNo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DepartmentId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CreateUserId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CreateUserName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CreateTime" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DisbursementStatus" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DisbursementDetailList" type="tns:ArrayOfDisbursementDetail" />
+              <s:element minOccurs="0" maxOccurs="1" name="DepartmentName" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="QueryDisbursementById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:DisbursementFindRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DisbursementFindRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:RequestMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="DisbursementId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DepartmentId" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="QueryDisbursementByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="QueryDisbursementByIdResult" type="tns:DisbursementFindResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfirmDepartmentDisbursement">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:DisbursementManageRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfirmDepartmentDisbursementResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConfirmDepartmentDisbursementResult" type="tns:DisbursementManageResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfirmStoreDisbursement">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:DisbursementManageRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfirmStoreDisbursementResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConfirmStoreDisbursementResult" type="tns:DisbursementManageResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateDisbursementDetail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:DisbursementDetailManageRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DisbursementDetailManageRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:RequestMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="DisbursementDetailId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="AppliedQuantity" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="AssignedQuanntity" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="UpdateDisbursementDetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateDisbursementDetailResult" type="tns:DisbursementDetailManageResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DisbursementDetailManageResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ResponseMessage" />
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GenerateDisbursementFormSoapIn">
+    <wsdl:part name="parameters" element="tns:GenerateDisbursementForm" />
+  </wsdl:message>
+  <wsdl:message name="GenerateDisbursementFormSoapOut">
+    <wsdl:part name="parameters" element="tns:GenerateDisbursementFormResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryDisbursementListSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryDisbursementList" />
+  </wsdl:message>
+  <wsdl:message name="QueryDisbursementListSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryDisbursementListResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueryDisbursementByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:QueryDisbursementById" />
+  </wsdl:message>
+  <wsdl:message name="QueryDisbursementByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:QueryDisbursementByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmDepartmentDisbursementSoapIn">
+    <wsdl:part name="parameters" element="tns:ConfirmDepartmentDisbursement" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmDepartmentDisbursementSoapOut">
+    <wsdl:part name="parameters" element="tns:ConfirmDepartmentDisbursementResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmStoreDisbursementSoapIn">
+    <wsdl:part name="parameters" element="tns:ConfirmStoreDisbursement" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmStoreDisbursementSoapOut">
+    <wsdl:part name="parameters" element="tns:ConfirmStoreDisbursementResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDisbursementDetailSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateDisbursementDetail" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDisbursementDetailSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateDisbursementDetailResponse" />
+  </wsdl:message>
+  <wsdl:portType name="DisbursementServiceSoap">
+    <wsdl:operation name="GenerateDisbursementForm">
+      <wsdl:input message="tns:GenerateDisbursementFormSoapIn" />
+      <wsdl:output message="tns:GenerateDisbursementFormSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryDisbursementList">
+      <wsdl:input message="tns:QueryDisbursementListSoapIn" />
+      <wsdl:output message="tns:QueryDisbursementListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryDisbursementById">
+      <wsdl:input message="tns:QueryDisbursementByIdSoapIn" />
+      <wsdl:output message="tns:QueryDisbursementByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmDepartmentDisbursement">
+      <wsdl:input message="tns:ConfirmDepartmentDisbursementSoapIn" />
+      <wsdl:output message="tns:ConfirmDepartmentDisbursementSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmStoreDisbursement">
+      <wsdl:input message="tns:ConfirmStoreDisbursementSoapIn" />
+      <wsdl:output message="tns:ConfirmStoreDisbursementSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDisbursementDetail">
+      <wsdl:input message="tns:UpdateDisbursementDetailSoapIn" />
+      <wsdl:output message="tns:UpdateDisbursementDetailSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DisbursementServiceSoap" type="tns:DisbursementServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GenerateDisbursementForm">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/GenerateDisbursementForm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryDisbursementList">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/QueryDisbursementList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryDisbursementById">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/QueryDisbursementById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmDepartmentDisbursement">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/ConfirmDepartmentDisbursement" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmStoreDisbursement">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/ConfirmStoreDisbursement" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDisbursementDetail">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/UpdateDisbursementDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DisbursementServiceSoap12" type="tns:DisbursementServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GenerateDisbursementForm">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/GenerateDisbursementForm" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryDisbursementList">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/QueryDisbursementList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryDisbursementById">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/QueryDisbursementById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmDepartmentDisbursement">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/ConfirmDepartmentDisbursement" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmStoreDisbursement">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/ConfirmStoreDisbursement" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDisbursementDetail">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/UpdateDisbursementDetail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DisbursementService">
+    <wsdl:port name="DisbursementServiceSoap" binding="tns:DisbursementServiceSoap">
+      <soap:address location="http://10.10.1.177:6685/sg/edu/nus/dispursement/webservice/DisbursementService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DisbursementServiceSoap12" binding="tns:DisbursementServiceSoap12">
+      <soap12:address location="http://10.10.1.177:6685/sg/edu/nus/dispursement/webservice/DisbursementService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

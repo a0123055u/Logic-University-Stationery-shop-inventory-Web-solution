@@ -1,0 +1,984 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6F9B1B31-174F-4E0A-A3A0-FC47E16D11EA}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Elephtan</RootNamespace>
+    <AssemblyName>Elephtan</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.1.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.1.2\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.1.2\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Logo\favicon.ico" />
+    <Content Include="Assets\Logo\logo.png" />
+    <Content Include="FrontendLib\bootstrap-3.3.2-dist\bootstrap-3.3.2-dist\css\bootstrap-theme.css" />
+    <Content Include="FrontendLib\bootstrap-3.3.2-dist\bootstrap-3.3.2-dist\css\bootstrap-theme.min.css" />
+    <Content Include="FrontendLib\bootstrap-3.3.2-dist\bootstrap-3.3.2-dist\css\bootstrap.css" />
+    <Content Include="FrontendLib\bootstrap-3.3.2-dist\bootstrap-3.3.2-dist\css\bootstrap.min.css" />
+    <Content Include="FrontendLib\bootstrap-3.3.2-dist\bootstrap-3.3.2-dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="FrontendLib\bootstrap-3.3.2-dist\bootstrap-3.3.2-dist\js\bootstrap.js" />
+    <Content Include="FrontendLib\bootstrap-3.3.2-dist\bootstrap-3.3.2-dist\js\bootstrap.min.js" />
+    <Content Include="FrontendLib\bootstrap-3.3.2-dist\bootstrap-3.3.2-dist\js\npm.js" />
+    <Content Include="FrontendLib\Chart.min.js" />
+    <Content Include="FrontendLib\font-awesome-4.3.0\css\font-awesome.css" />
+    <Content Include="FrontendLib\font-awesome-4.3.0\css\font-awesome.min.css" />
+    <Content Include="FrontendLib\font-awesome-4.3.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="FrontendLib\jquery-2.1.3.min.js" />
+    <Content Include="FrontendLib\themeSpacelab.min.css" />
+    <Content Include="FrontendTempFolder\ScriptTemplate.html" />
+    <Content Include="Global.asax" />
+    <Content Include="JsonGenerators\JsonDepartmentHeadOverview.aspx" />
+    <Content Include="JsonGenerators\JsonDepartmentStaffOverview.aspx" />
+    <Content Include="JsonGenerators\JsonStoreOverview.aspx" />
+    <Content Include="packages.config" />
+    <Content Include="DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Content>
+    <None Include="DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Content>
+    <None Include="Service References\AdjustmentService\AdjustmentService.wsdl" />
+    <Content Include="ReportInput.aspx" />
+    <Content Include="Service References\AdjustmentService\Elephtan.AdjustmentService.AdjustmentFindListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\AdjustmentService\Elephtan.AdjustmentService.AdjustmentFindResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\AdjustmentService\Elephtan.AdjustmentService.createAdjustmentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\AdjustmentService\Elephtan.AdjustmentService.QueryAdjustByIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\AdjustmentService\Elephtan.AdjustmentService.QueryAdjustListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\AdjustmentService\Elephtan.AdjustmentService.updateadjustmentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\AdjustmentService\Elephtan.AdjustmentService.viewdetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\CollectionPointService\CollectionPointService.wsdl" />
+    <None Include="Service References\AdjustmentService\AdjustmentService.disco" />
+    <None Include="Service References\AdjustmentService\configuration91.svcinfo" />
+    <None Include="Service References\AdjustmentService\configuration.svcinfo" />
+    <None Include="Service References\AdjustmentService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Service References\CollectionPointService\Elephtan.CollectionPointService.CollectionPointFindListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\CollectionPointService\Elephtan.CollectionPointService.CollectionPointFindResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\CollectionPointService\Elephtan.CollectionPointService.QueryCollectionByIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\CollectionPointService\Elephtan.CollectionPointService.QueryCollectionListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\DelegationService\DelegationService.wsdl" />
+    <Content Include="Service References\DelegationService\Elephtan.DelegationService.addDelegationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\DelegationService\Elephtan.DelegationService.DelegationFindResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\DelegationService\Elephtan.DelegationService.findDelegationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\DelegationService\Elephtan.DelegationService.updateDelegationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\DepartmentService\DepartmentService.disco" />
+    <None Include="Service References\DepartmentService\configuration91.svcinfo" />
+    <None Include="Service References\DepartmentService\configuration.svcinfo" />
+    <None Include="Service References\CollectionPointService\CollectionPointService.disco" />
+    <None Include="Service References\CollectionPointService\configuration91.svcinfo" />
+    <None Include="Service References\CollectionPointService\configuration.svcinfo" />
+    <None Include="Service References\CollectionPointService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\DelegationService\DelegationService.disco" />
+    <None Include="Service References\DelegationService\configuration91.svcinfo" />
+    <None Include="Service References\DelegationService\configuration.svcinfo" />
+    <None Include="Service References\DelegationService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Service References\DepartmentService\Elephtan.DepartmentService.DepartmentFindResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\DepartmentService\Elephtan.DepartmentService.DepartmentManageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\DepartmentService\Elephtan.DepartmentService.QueryDepartmentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\DepartmentService\Elephtan.DepartmentService.UpdateDepartmentCollectionInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\DepartmentService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\DictService\DictService.wsdl" />
+    <Content Include="Service References\DictService\Elephtan.DictService.DictFindListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\DictService\Elephtan.DictService.QueryDictListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\DictService\DictService.disco" />
+    <None Include="Service References\DictService\configuration91.svcinfo" />
+    <None Include="Service References\DictService\configuration.svcinfo" />
+    <None Include="Service References\DictService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\DisbursementService\DisbursementService.disco" />
+    <None Include="Service References\DisbursementService\configuration91.svcinfo" />
+    <None Include="Service References\DisbursementService\configuration.svcinfo" />
+    <Content Include="Service References\DisbursementService\Elephtan.DisbursementService.ConfirmDepartmentDisbursementResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\DisbursementService\Elephtan.DisbursementService.ConfirmStoreDisbursementResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\DisbursementService\Elephtan.DisbursementService.DisbursementDetailManageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\DisbursementService\Elephtan.DisbursementService.DisbursementFindListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\DisbursementService\Elephtan.DisbursementService.DisbursementFindResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\DisbursementService\Elephtan.DisbursementService.DisbursementManageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\DisbursementService\Elephtan.DisbursementService.GenerateDisbursementFormResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\DisbursementService\Elephtan.DisbursementService.QueryDisbursementByIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\DisbursementService\Elephtan.DisbursementService.QueryDisbursementListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\DisbursementService\Elephtan.DisbursementService.UpdateDisbursementDetailResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\DisbursementService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Service References\ItemService\Elephtan.ItemService.CreateItemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ItemService\Elephtan.ItemService.DeleteItemByIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ItemService\Elephtan.ItemService.ItemFindListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ItemService\Elephtan.ItemService.ItemFindResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ItemService\Elephtan.ItemService.ItemManageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ItemService\Elephtan.ItemService.QueryItemByIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ItemService\Elephtan.ItemService.QueryItemListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ItemService\Elephtan.ItemService.UpdateItemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\DepartmentService\DepartmentService.wsdl" />
+    <None Include="Service References\DisbursementService\DisbursementService.wsdl" />
+    <None Include="Service References\ItemService\ItemService.disco" />
+    <None Include="Service References\ItemService\configuration91.svcinfo" />
+    <None Include="Service References\ItemService\configuration.svcinfo" />
+    <None Include="Service References\ItemService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ItemService\ItemService.wsdl" />
+    <Content Include="Service References\OrderService\Elephtan.OrderService.ConfirmOrderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\OrderService\Elephtan.OrderService.CreateOrderDetailResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\OrderService\Elephtan.OrderService.CreateOrderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\OrderService\Elephtan.OrderService.FindDeliveryDetailListByDelieveryIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\OrderService\Elephtan.OrderService.FindOrderDetailListByOrderIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\OrderService\Elephtan.OrderService.FindOrderListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\OrderService\Elephtan.OrderService.FindSupplierDeliveryListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\OrderService\Elephtan.OrderService.OrderDetailManageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\OrderService\Elephtan.OrderService.OrderFindListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\OrderService\Elephtan.OrderService.OrderFindResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\OrderService\Elephtan.OrderService.OrderManageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\OrderService\Elephtan.OrderService.ReceiveOrderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\OrderService\Elephtan.OrderService.UpdateDeliveryDetailResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\OrderService\Elephtan.OrderService.UpdateOrderDetailResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\OrderService\Elephtan.OrderService.UpdateOrderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\OrderService\OrderService.disco" />
+    <None Include="Service References\OrderService\configuration91.svcinfo" />
+    <None Include="Service References\OrderService\configuration.svcinfo" />
+    <None Include="Service References\OrderService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Service References\ReportService\Elephtan.ReportService.QueryReportResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ReportService\Elephtan.ReportService.ReportFindResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\ReportService\ReportService.disco" />
+    <None Include="Service References\ReportService\configuration91.svcinfo" />
+    <None Include="Service References\ReportService\configuration.svcinfo" />
+    <None Include="Service References\ReportService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Service References\RequisitionService\Elephtan.RequisitionService.AddRequisitionItemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RequisitionService\Elephtan.RequisitionService.AddRequisitionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RequisitionService\Elephtan.RequisitionService.DeleteRequisitionItemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RequisitionService\Elephtan.RequisitionService.FindAllRequisitionListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RequisitionService\Elephtan.RequisitionService.FindRequisitionDetailByIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RequisitionService\Elephtan.RequisitionService.FindRequisitionGroupByDepartmentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RequisitionService\Elephtan.RequisitionService.FindRequisitionListByDepartmentIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RequisitionService\Elephtan.RequisitionService.FindRequisitionListByUserIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RequisitionService\Elephtan.RequisitionService.RequisitionFindListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RequisitionService\Elephtan.RequisitionService.RequisitionFindResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RequisitionService\Elephtan.RequisitionService.RequisitionItemManageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RequisitionService\Elephtan.RequisitionService.RequisitionManageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RequisitionService\Elephtan.RequisitionService.UpdateRequisitionItemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RequisitionService\Elephtan.RequisitionService.UpdateRequisitionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\OrderService\OrderService.wsdl" />
+    <None Include="Service References\ReportService\ReportService.wsdl" />
+    <None Include="Service References\RequisitionService\RequisitionService.disco" />
+    <None Include="Service References\RequisitionService\configuration91.svcinfo" />
+    <None Include="Service References\RequisitionService\configuration.svcinfo" />
+    <None Include="Service References\RequisitionService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\RequisitionService\RequisitionService.wsdl" />
+    <Content Include="Service References\RetrievingService\Elephtan.RetrievingService.ConfirmRetrivingFormResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RetrievingService\Elephtan.RetrievingService.FindRetrievingByIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RetrievingService\Elephtan.RetrievingService.FindRetrievingListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RetrievingService\Elephtan.RetrievingService.GenereateRetrievingFormResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RetrievingService\Elephtan.RetrievingService.RetrievingDetailManageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RetrievingService\Elephtan.RetrievingService.RetrievingFindListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RetrievingService\Elephtan.RetrievingService.RetrievingFindResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RetrievingService\Elephtan.RetrievingService.RetrievingManageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\RetrievingService\Elephtan.RetrievingService.UpdateRetrivingDetailResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\RetrievingService\RetrievingService.disco" />
+    <None Include="Service References\RetrievingService\configuration91.svcinfo" />
+    <None Include="Service References\RetrievingService\configuration.svcinfo" />
+    <None Include="Service References\RetrievingService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Service References\UserService\Elephtan.UserService.FindGcmRegistrationByUserIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\UserService\Elephtan.UserService.QueryUserByIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\UserService\Elephtan.UserService.QueryUserByNumResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\UserService\Elephtan.UserService.QueryUsersByDepartmentIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\UserService\Elephtan.UserService.updategcmregistrationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\UserService\Elephtan.UserService.UserFindListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\UserService\Elephtan.UserService.UserFindResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\RetrievingService\RetrievingService.wsdl" />
+    <None Include="Service References\UserService\UserService.disco" />
+    <None Include="Service References\UserService\configuration91.svcinfo" />
+    <None Include="Service References\UserService\configuration.svcinfo" />
+    <None Include="Service References\UserService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Service References\WaitingItemService\Elephtan.WaitingItemService.QueryWaitingItemsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\WaitingItemService\Elephtan.WaitingItemService.WaitingItemFindListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\WaitingItemService\WaitingItemService.disco" />
+    <None Include="Service References\WaitingItemService\configuration91.svcinfo" />
+    <None Include="Service References\WaitingItemService\configuration.svcinfo" />
+    <None Include="Service References\WaitingItemService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="SharedPages\DashboardMaster.css" />
+    <Content Include="SharedPages\EntireCatalog.aspx" />
+    <Content Include="SharedPages\RequestStationary.aspx" />
+    <Content Include="SharedPages\sigin.css" />
+    <Content Include="SharedPages\signin.aspx" />
+    <Content Include="StationeryDepartment\DeartmentStaffOverview.aspx" />
+    <Content Include="StationeryDepartment\DepartmentHeadOverview.aspx" />
+    <Content Include="StationeryDepartment\DepartmentHeadPendingRequest.aspx" />
+    <Content Include="StationeryDepartment\DepartmentHeadSettings.aspx" />
+    <Content Include="StationeryDepartment\DepartmentPendingRequestDetail.aspx" />
+    <Content Include="StationeryDepartment\DepartmentRepresetitveSettings.aspx" />
+    <Content Include="StationeryDepartment\DepartmentRequestConfirmation.aspx" />
+    <Content Include="StationeryDepartment\DepartmentRequestDetail.aspx" />
+    <Content Include="StationeryDepartment\DepartmentStaffDetail.aspx" />
+    <Content Include="StationeryStore\StationaryStoreDepartmentWaiting.aspx" />
+    <Content Include="StationeryStore\StationaryStoreDepartmentWaitingDetail.aspx" />
+    <Content Include="StationeryStore\StationaryStoreDisbursement.aspx" />
+    <Content Include="StationeryStore\StationaryStoreDisbursmentDetail.aspx" />
+    <Content Include="StationeryStore\StationaryStoreIssueVoucher.aspx" />
+    <Content Include="StationeryStore\StationaryStoreIssueVouherDetail.aspx" />
+    <Content Include="StationeryStore\StationaryStoreOrderConfirmation.aspx" />
+    <Content Include="StationeryStore\StationaryStoreOrderDetail.aspx" />
+    <Content Include="StationeryStore\StationaryStoreOrderStatus.aspx" />
+    <Content Include="StationeryStore\StationaryStoreOverview.aspx" />
+    <Content Include="StationeryStore\StationaryStorePendingVoucher.aspx" />
+    <Content Include="StationeryStore\StationaryStorePendingVoucherDetail.aspx" />
+    <Content Include="StationeryStore\StationaryStorePreviousOrderDetail.aspx" />
+    <Content Include="StationeryStore\StationaryStoreReport.aspx" />
+    <Content Include="StationeryStore\StationaryStoreRequest.aspx" />
+    <Content Include="StationeryStore\StationaryStoreRequestDetail.aspx" />
+    <Content Include="StationeryStore\StationaryStoreRetrival.aspx" />
+    <Content Include="StationeryStore\StationaryStoreRetrivalDetail.aspx" />
+    <Content Include="StationeryStore\StationaryStoreStockDetails.aspx" />
+    <Content Include="StationeryStore\StationaryStoreStockDetailsUpdate.aspx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CrystalReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataModel\OutstandingEntry.cs" />
+    <Compile Include="DataModel\CollectionPoint.cs" />
+    <Compile Include="DataModel\Disbursement.cs" />
+    <Compile Include="DataModel\Item.cs" />
+    <Compile Include="DataModel\Menu.cs" />
+    <Compile Include="DataModel\Order.cs" />
+    <Compile Include="DataModel\OverviewDisplayObject.cs" />
+    <Compile Include="DataModel\Request.cs" />
+    <Compile Include="DataModel\RetriverRecord.cs" />
+    <Compile Include="DataModel\SessionObjectList.cs" />
+    <Compile Include="DataModel\StaffDetail.cs" />
+    <Compile Include="DataModel\StationaryItem.cs" />
+    <Compile Include="DataModel\UserInfo.cs" />
+    <Compile Include="DataModel\Voucher.cs" />
+    <Compile Include="DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="JsonGenerators\JsonDepartmentHeadOverview.aspx.cs">
+      <DependentUpon>JsonDepartmentHeadOverview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="JsonGenerators\JsonDepartmentHeadOverview.aspx.designer.cs">
+      <DependentUpon>JsonDepartmentHeadOverview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="JsonGenerators\JsonDepartmentStaffOverview.aspx.cs">
+      <DependentUpon>JsonDepartmentStaffOverview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="JsonGenerators\JsonDepartmentStaffOverview.aspx.designer.cs">
+      <DependentUpon>JsonDepartmentStaffOverview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="JsonGenerators\JsonGeneratorController.cs" />
+    <Compile Include="JsonGenerators\JsonStoreOverview.aspx.cs">
+      <DependentUpon>JsonStoreOverview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="JsonGenerators\JsonStoreOverview.aspx.designer.cs">
+      <DependentUpon>JsonStoreOverview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportInput.aspx.cs">
+      <DependentUpon>ReportInput.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportInput.aspx.designer.cs">
+      <DependentUpon>ReportInput.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\AdjustmentService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\CollectionPointService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\DelegationService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\DepartmentService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\DictService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\DisbursementService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ItemService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\OrderService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ReportService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\RequisitionService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\RetrievingService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\UserService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WaitingItemService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="SharedPages\DashboardMaster.Master.cs">
+      <DependentUpon>DashboardMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SharedPages\DashboardMaster.Master.designer.cs">
+      <DependentUpon>DashboardMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="SharedPages\EntireCatalog.aspx.cs">
+      <DependentUpon>EntireCatalog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SharedPages\EntireCatalog.aspx.designer.cs">
+      <DependentUpon>EntireCatalog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SharedPages\RequestStationary.aspx.cs">
+      <DependentUpon>RequestStationary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SharedPages\RequestStationary.aspx.designer.cs">
+      <DependentUpon>RequestStationary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SharedPages\signin.aspx.cs">
+      <DependentUpon>signin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SharedPages\signin.aspx.designer.cs">
+      <DependentUpon>signin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StationeryDepartment\DeartmentStaffOverview.aspx.cs">
+      <DependentUpon>DeartmentStaffOverview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StationeryDepartment\DeartmentStaffOverview.aspx.designer.cs">
+      <DependentUpon>DeartmentStaffOverview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StationeryDepartment\DepartmentHeadOverview.aspx.cs">
+      <DependentUpon>DepartmentHeadOverview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StationeryDepartment\DepartmentHeadOverview.aspx.designer.cs">
+      <DependentUpon>DepartmentHeadOverview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StationeryDepartment\DepartmentHeadPendingRequest.aspx.cs">
+      <DependentUpon>DepartmentHeadPendingRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StationeryDepartment\DepartmentHeadPendingRequest.aspx.designer.cs">
+      <DependentUpon>DepartmentHeadPendingRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StationeryDepartment\DepartmentHeadSettings.aspx.cs">
+      <DependentUpon>DepartmentHeadSettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StationeryDepartment\DepartmentHeadSettings.aspx.designer.cs">
+      <DependentUpon>DepartmentHeadSettings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StationeryDepartment\DepartmentPendingRequestDetail.aspx.cs">
+      <DependentUpon>DepartmentPendingRequestDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StationeryDepartment\DepartmentPendingRequestDetail.aspx.designer.cs">
+      <DependentUpon>DepartmentPendingRequestDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StationeryDepartment\DepartmentRepresetitveSettings.aspx.cs">
+      <DependentUpon>DepartmentRepresetitveSettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StationeryDepartment\DepartmentRepresetitveSettings.aspx.designer.cs">
+      <DependentUpon>DepartmentRepresetitveSettings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StationeryDepartment\DepartmentRequestConfirmation.aspx.cs">
+      <DependentUpon>DepartmentRequestConfirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StationeryDepartment\DepartmentRequestConfirmation.aspx.designer.cs">
+      <DependentUpon>DepartmentRequestConfirmation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StationeryDepartment\DepartmentRequestDetail.aspx.cs">
+      <DependentUpon>DepartmentRequestDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StationeryDepartment\DepartmentRequestDetail.aspx.designer.cs">
+      <DependentUpon>DepartmentRequestDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StationeryDepartment\DepartmentStaffDetail.aspx.cs">
+      <DependentUpon>DepartmentStaffDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StationeryDepartment\DepartmentStaffDetail.aspx.designer.cs">
+      <DependentUpon>DepartmentStaffDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStoreDepartmentWaiting.aspx.cs">
+      <DependentUpon>StationaryStoreDepartmentWaiting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStoreDepartmentWaiting.aspx.designer.cs">
+      <DependentUpon>StationaryStoreDepartmentWaiting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStoreDepartmentWaitingDetail.aspx.cs">
+      <DependentUpon>StationaryStoreDepartmentWaitingDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStoreDepartmentWaitingDetail.aspx.designer.cs">
+      <DependentUpon>StationaryStoreDepartmentWaitingDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStoreDisbursement.aspx.cs">
+      <DependentUpon>StationaryStoreDisbursement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStoreDisbursement.aspx.designer.cs">
+      <DependentUpon>StationaryStoreDisbursement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStoreDisbursmentDetail.aspx.cs">
+      <DependentUpon>StationaryStoreDisbursmentDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStoreDisbursmentDetail.aspx.designer.cs">
+      <DependentUpon>StationaryStoreDisbursmentDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStoreIssueVoucher.aspx.cs">
+      <DependentUpon>StationaryStoreIssueVoucher.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStoreIssueVoucher.aspx.designer.cs">
+      <DependentUpon>StationaryStoreIssueVoucher.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStoreIssueVouherDetail.aspx.cs">
+      <DependentUpon>StationaryStoreIssueVouherDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStoreIssueVouherDetail.aspx.designer.cs">
+      <DependentUpon>StationaryStoreIssueVouherDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStoreOrderConfirmation.aspx.cs">
+      <DependentUpon>StationaryStoreOrderConfirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStoreOrderConfirmation.aspx.designer.cs">
+      <DependentUpon>StationaryStoreOrderConfirmation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStoreOrderDetail.aspx.cs">
+      <DependentUpon>StationaryStoreOrderDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStoreOrderDetail.aspx.designer.cs">
+      <DependentUpon>StationaryStoreOrderDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStoreOrderStatus.aspx.cs">
+      <DependentUpon>StationaryStoreOrderStatus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStoreOrderStatus.aspx.designer.cs">
+      <DependentUpon>StationaryStoreOrderStatus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStoreOverview.aspx.cs">
+      <DependentUpon>StationaryStoreOverview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStoreOverview.aspx.designer.cs">
+      <DependentUpon>StationaryStoreOverview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStorePendingVoucher.aspx.cs">
+      <DependentUpon>StationaryStorePendingVoucher.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStorePendingVoucher.aspx.designer.cs">
+      <DependentUpon>StationaryStorePendingVoucher.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStorePendingVoucherDetail.aspx.cs">
+      <DependentUpon>StationaryStorePendingVoucherDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStorePendingVoucherDetail.aspx.designer.cs">
+      <DependentUpon>StationaryStorePendingVoucherDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStorePreviousOrderDetail.aspx.cs">
+      <DependentUpon>StationaryStorePreviousOrderDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStorePreviousOrderDetail.aspx.designer.cs">
+      <DependentUpon>StationaryStorePreviousOrderDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStoreReport.aspx.cs">
+      <DependentUpon>StationaryStoreReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStoreReport.aspx.designer.cs">
+      <DependentUpon>StationaryStoreReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStoreRequest.aspx.cs">
+      <DependentUpon>StationaryStoreRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStoreRequest.aspx.designer.cs">
+      <DependentUpon>StationaryStoreRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStoreRequestDetail.aspx.cs">
+      <DependentUpon>StationaryStoreRequestDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStoreRequestDetail.aspx.designer.cs">
+      <DependentUpon>StationaryStoreRequestDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStoreRetrival.aspx.cs">
+      <DependentUpon>StationaryStoreRetrival.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStoreRetrival.aspx.designer.cs">
+      <DependentUpon>StationaryStoreRetrival.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStoreRetrivalDetail.aspx.cs">
+      <DependentUpon>StationaryStoreRetrivalDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStoreRetrivalDetail.aspx.designer.cs">
+      <DependentUpon>StationaryStoreRetrivalDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStoreStockDetails.aspx.cs">
+      <DependentUpon>StationaryStoreStockDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStoreStockDetails.aspx.designer.cs">
+      <DependentUpon>StationaryStoreStockDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStoreStockDetailsUpdate.aspx.cs">
+      <DependentUpon>StationaryStoreStockDetailsUpdate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StationeryStore\StationaryStoreStockDetailsUpdate.aspx.designer.cs">
+      <DependentUpon>StationaryStoreStockDetailsUpdate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UtilityModel\SystemUtility.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FrontendLib\bootstrap-3.3.2-dist\bootstrap-3.3.2-dist\css\bootstrap-theme.css.map" />
+    <Content Include="FrontendLib\bootstrap-3.3.2-dist\bootstrap-3.3.2-dist\css\bootstrap.css.map" />
+    <Content Include="FrontendLib\bootstrap-3.3.2-dist\bootstrap-3.3.2-dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="FrontendLib\bootstrap-3.3.2-dist\bootstrap-3.3.2-dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="FrontendLib\bootstrap-3.3.2-dist\bootstrap-3.3.2-dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="FrontendLib\bootstrap-3.3.2-dist\bootstrap-3.3.2-dist\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="FrontendLib\font-awesome-4.3.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="FrontendLib\font-awesome-4.3.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="FrontendLib\font-awesome-4.3.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="FrontendLib\font-awesome-4.3.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="FrontendLib\font-awesome-4.3.0\fonts\FontAwesome.otf" />
+    <Content Include="FrontendLib\font-awesome-4.3.0\less\animated.less" />
+    <Content Include="FrontendLib\font-awesome-4.3.0\less\bordered-pulled.less" />
+    <Content Include="FrontendLib\font-awesome-4.3.0\less\core.less" />
+    <Content Include="FrontendLib\font-awesome-4.3.0\less\fixed-width.less" />
+    <Content Include="FrontendLib\font-awesome-4.3.0\less\font-awesome.less" />
+    <Content Include="FrontendLib\font-awesome-4.3.0\less\icons.less" />
+    <Content Include="FrontendLib\font-awesome-4.3.0\less\larger.less" />
+    <Content Include="FrontendLib\font-awesome-4.3.0\less\list.less" />
+    <Content Include="FrontendLib\font-awesome-4.3.0\less\mixins.less" />
+    <Content Include="FrontendLib\font-awesome-4.3.0\less\path.less" />
+    <Content Include="FrontendLib\font-awesome-4.3.0\less\rotated-flipped.less" />
+    <Content Include="FrontendLib\font-awesome-4.3.0\less\stacked.less" />
+    <Content Include="FrontendLib\font-awesome-4.3.0\less\variables.less" />
+    <Content Include="FrontendLib\font-awesome-4.3.0\scss\font-awesome.scss" />
+    <Content Include="FrontendLib\font-awesome-4.3.0\scss\_animated.scss" />
+    <Content Include="FrontendLib\font-awesome-4.3.0\scss\_bordered-pulled.scss" />
+    <Content Include="FrontendLib\font-awesome-4.3.0\scss\_core.scss" />
+    <Content Include="FrontendLib\font-awesome-4.3.0\scss\_fixed-width.scss" />
+    <Content Include="FrontendLib\font-awesome-4.3.0\scss\_icons.scss" />
+    <Content Include="FrontendLib\font-awesome-4.3.0\scss\_larger.scss" />
+    <Content Include="FrontendLib\font-awesome-4.3.0\scss\_list.scss" />
+    <Content Include="FrontendLib\font-awesome-4.3.0\scss\_mixins.scss" />
+    <Content Include="FrontendLib\font-awesome-4.3.0\scss\_path.scss" />
+    <Content Include="FrontendLib\font-awesome-4.3.0\scss\_rotated-flipped.scss" />
+    <Content Include="FrontendLib\font-awesome-4.3.0\scss\_stacked.scss" />
+    <Content Include="FrontendLib\font-awesome-4.3.0\scss\_variables.scss" />
+    <Content Include="SharedPages\DashboardMaster.Master" />
+    <None Include="Service References\UserService\UserService.wsdl" />
+    <None Include="Service References\WaitingItemService\WaitingItemService.wsdl" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\AdjustmentService\" />
+    <WCFMetadataStorage Include="Service References\CollectionPointService\" />
+    <WCFMetadataStorage Include="Service References\DelegationService\" />
+    <WCFMetadataStorage Include="Service References\DepartmentService\" />
+    <WCFMetadataStorage Include="Service References\DictService\" />
+    <WCFMetadataStorage Include="Service References\DisbursementService\" />
+    <WCFMetadataStorage Include="Service References\ItemService\" />
+    <WCFMetadataStorage Include="Service References\OrderService\" />
+    <WCFMetadataStorage Include="Service References\ReportService\" />
+    <WCFMetadataStorage Include="Service References\RequisitionService\" />
+    <WCFMetadataStorage Include="Service References\RetrievingService\" />
+    <WCFMetadataStorage Include="Service References\UserService\" />
+    <WCFMetadataStorage Include="Service References\WaitingItemService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CrystalReport1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>61461</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:8080/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

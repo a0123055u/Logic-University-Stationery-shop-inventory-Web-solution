@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.nus.edu.sg/storeservcie" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.nus.edu.sg/storeservcie" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.nus.edu.sg/storeservcie">
+      <s:element name="addDelegation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:DelegationFindRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DelegationFindRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:RequestMessage">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="AuthorizationId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="FromUserId1" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ToUserId1" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="StartTime1" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="EndTime1" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DelegationStatus1" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="RequestMessage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RequestUserNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RequestUserId" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="addDelegationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="addDelegationResult" type="tns:DelegationFindResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DelegationFindResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceResponseMessge" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceResponseCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AuthorizationId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FromUserId1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ToUserId1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StartTime1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EndTime1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DelegationStatus1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ToUserName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="updateDelegation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:DelegationFindRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateDelegationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updateDelegationResult" type="tns:DelegationFindResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="findDelegation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:DelegationFindRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="findDelegationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="findDelegationResult" type="tns:DelegationFindResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="addDelegationSoapIn">
+    <wsdl:part name="parameters" element="tns:addDelegation" />
+  </wsdl:message>
+  <wsdl:message name="addDelegationSoapOut">
+    <wsdl:part name="parameters" element="tns:addDelegationResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateDelegationSoapIn">
+    <wsdl:part name="parameters" element="tns:updateDelegation" />
+  </wsdl:message>
+  <wsdl:message name="updateDelegationSoapOut">
+    <wsdl:part name="parameters" element="tns:updateDelegationResponse" />
+  </wsdl:message>
+  <wsdl:message name="findDelegationSoapIn">
+    <wsdl:part name="parameters" element="tns:findDelegation" />
+  </wsdl:message>
+  <wsdl:message name="findDelegationSoapOut">
+    <wsdl:part name="parameters" element="tns:findDelegationResponse" />
+  </wsdl:message>
+  <wsdl:portType name="DelegationServiceSoap">
+    <wsdl:operation name="addDelegation">
+      <wsdl:input message="tns:addDelegationSoapIn" />
+      <wsdl:output message="tns:addDelegationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateDelegation">
+      <wsdl:input message="tns:updateDelegationSoapIn" />
+      <wsdl:output message="tns:updateDelegationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="findDelegation">
+      <wsdl:input message="tns:findDelegationSoapIn" />
+      <wsdl:output message="tns:findDelegationSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DelegationServiceSoap" type="tns:DelegationServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="addDelegation">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/addDelegation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateDelegation">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/updateDelegation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findDelegation">
+      <soap:operation soapAction="http://www.nus.edu.sg/storeservcie/findDelegation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DelegationServiceSoap12" type="tns:DelegationServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="addDelegation">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/addDelegation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateDelegation">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/updateDelegation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findDelegation">
+      <soap12:operation soapAction="http://www.nus.edu.sg/storeservcie/findDelegation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DelegationService">
+    <wsdl:port name="DelegationServiceSoap" binding="tns:DelegationServiceSoap">
+      <soap:address location="http://10.10.1.177:6685/sg/edu/nus/delegation/webservice/DelegationService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DelegationServiceSoap12" binding="tns:DelegationServiceSoap12">
+      <soap12:address location="http://10.10.1.177:6685/sg/edu/nus/delegation/webservice/DelegationService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
